@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HOUSING INF — Site officiel</title>
+  <meta name="description" content="HOUSING INF — Action-RPG horrifique : atmosphère oppressante, énigmes et ténèbres lunaires. Découvrez l’expérience unique sur Roblox.">
+  <meta name="author" content="Studio Aurora">
+  
+  <!-- SEO & Social preview -->
+  <meta property="og:title" content="HOUSING INF — Action-RPG horrifique">
+  <meta property="og:description" content="Entrez dans un univers oppressant : couloirs obscurs, murmures numériques et choix fatals.">
+  <meta property="og:image" content="./images/preview.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="./images/favicon.png">
+  
+  <style>
+    :root {
+      --bg:#050203; --panel:#0a0708; --muted:#9c9c9c; --ghost:#9ef0ff; --accent:#cccccc; --radius:10px;
+      font-family: 'Segoe UI', Roboto, Inter, system-ui, -apple-system;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#000 0%, #2b2b2b 100%);color:#f0f0f0;line-height:1.45}
+
+    .container{max-width:1180px;margin:0 auto;padding:28px}
+
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(0,0,0,0.85),transparent);backdrop-filter: blur(6px);padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle,#555,#111);display:flex;align-items:center;justify-content:center;font-weight:900;color:#f0f0f0;box-shadow:0 0 20px rgba(200,200,200,0.2)}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:700;transition:color 0.3s}
+    nav a:hover{color:#fff}
+    .cta{background:linear-gradient(90deg,#ddd,#555);color:#111;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:900;box-shadow:0 0 10px rgba(200,200,200,0.3);transition:transform 0.2s}
+    .cta:hover{transform:scale(1.05)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;padding:44px 0}
+    .hero-card{background:rgba(10,7,8,0.85);padding:28px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 0 50px rgba(0,0,0,0.8)}
+    h1{font-size:clamp(30px,4vw,52px);margin:0 0 10px;letter-spacing:0.6px;text-shadow:0 0 8px rgba(200,200,200,0.3)}
+    .lead{color:var(--muted);margin-bottom:18px;font-weight:600}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .feature{background:rgba(255,255,255,0.02);padding:14px;border-radius:8px;border-left:3px solid #aaa}
+    .feature h4{margin:6px 0 6px}
+    .meta{color:var(--muted);font-size:13px}
+
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:8px;filter:brightness(0.85) contrast(1.05);transition:0.3s}
+    .gallery img:hover{filter:brightness(1) contrast(1.1)}
+
+    section{margin:44px 0}
+    .split{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start}
+    .card{background:var(--panel);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.05)}
+
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.05)}
+
+    @media (max-width:980px){.hero,.split{grid-template-columns:1fr} .gallery img{height:140px}}
+
+    .float-cta{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,#ddd,#555);padding:12px 14px;border-radius:10px;box-shadow:0 0 20px rgba(200,200,200,0.3);color:#111;font-weight:900;cursor:pointer;transition:transform 0.2s}
+    .float-cta:hover{transform:scale(1.05)}
+
+    /* Effet glitch */
+    .glitch{position:relative;display:inline-block}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;opacity:0.6}
+    .glitch::before{color:#fff;transform:translate(2px,-2px)}
+    .glitch::after{color:#666;transform:translate(-2px,2px)}
+
+    /* Animation modale */
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;animation:fadeIn 0.3s ease}
+    .modal{background:rgba(10,7,8,0.95);padding:18px;border-radius:10px;max-width:880px;width:94%;animation:slideIn 0.3s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes slideIn{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div>
+          <div style="font-weight:900">HOUSING INF</div>
+          <div style="font-size:13px;color:var(--muted)">Action • Énigme • Horreur</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="https://discord.gg/UVer3SR66s">Discord</a></li>
+          <li><a href="#world">Événements</a></li>
+          <li><a href="./service-client.html">Service client</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="cta" href="https://www.roblox.com/games/126544886688585/Housing-alpha">Jouer sur Roblox</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1 class="glitch" data-text="HOUSING">HOUSING</h1>
+        <p class="lead">Lune sanglante, couloirs obscurs, murmures numériques. Chaque pas pourrait être le dernier.</p>
+        <div class="actions">
+          <a class="cta" href="file:///D:/Espace%20giulian/Site%20personnel/Shop.HTML">GamePass</a>
+          <a href="#screens" style="padding:10px 14px;background:transparent;border-radius:8px;border:1px solid rgba(255,255,255,0.05);font-weight:800;color:var(--muted);text-decoration:none">Serveur Discord</a>
+        </div>
+
+        <div class="features" id="features">
+          <div class="feature">
+            <div class="meta">Chapitre 1</div>
+            <h4>The House</h4>
+            <div class="meta">Vous apparaissez dans une maison moderne et devez trouver les clés cachées pour vous échapper.</div>
+          </div>
+          <div class="feature">
+            <div class="meta">Chapitre 2</div>
+            <h4>À venir</h4>
+          </div>
+          <div class="feature">
+            <div class="meta">Chapitre 3</div>
+            <h4>À venir</h4>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Sortie prévue</h3>
+          <p class="meta">Fin 2025 — PC & Smartphone</p>
+          <img src="file:///C:/Users/MPA/Downloads/HOUSING%20(1).png" alt="Miniature du jeu HOUSING" style="width:100%;height:220px;object-fit:cover;border-radius:8px">
+        </div>
+      </aside>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="world">
+      <div class="split">
+        <div>
+          <h2>Événements hebdomadaires</h2>
+          <p class="lead">Tous les dimanches, participez à des événements spéciaux : giveaways, rôles uniques, avant-premières et plus encore.</p>
+          <div class="card" style="margin-top:12px">
+            <h3>Conditions de participation :</h3>
+            <ul style="margin:10px 0;padding-left:18px;color:var(--muted)">
+              <li><strong>Être membre du groupe Roblox</strong></li>
+              <li><strong>Rejoindre le serveur Discord</strong></li>
+              <li><strong>Être connecté au jeu</strong></li>
+            </ul>
+          </div>
+    </section>
+
+    <!-- DISCORD -->
+    <section id="screens">
+      <h2>IG</h2>
+      <div class="gallery" style="margin-top:12px">
+        <img src="./images/capture1.png" alt="Capture d’écran du Discord 1">
+        <img src="./images/capture2.png" alt="Capture d’écran du Discord 2">
+        <img src="https://images.unsplash.com/photo-1523983303491-3aa64a099431?q=80&w=1600&auto=format&fit=crop" alt="Illustration ambiance horrifique">
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news">
+      <h2>Actualités</h2>
+      <div class="card">
+        <article>
+          <h4>Alpha horrifique 0.3</h4>
+          <div class="meta">9 septembre 2025</div>
+          <p style="color:var(--muted)">Ajout de créatures nocturnes, ajustement de l’éclairage dynamique et bruits aléatoires pour renforcer la peur.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GAMEPASS -->
+    <section id="buy">
+      <h2>GamePass</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px">
+        <div class="card">
+          <h3>Édition VIP</h3>
+          <p class="meta">Starter pack VIP + rôle exclusif</p>
+          <p style="font-weight:900;font-size:18px">4,99€</p>
+          <a class="cta" href="#">Acheter</a>
+        </div>
+        <div class="card">
+          <h3>Édition Premium</h3>
+          <p class="meta">Starter pack Premium + rôle exclusif</p>
+          <p style="font-weight:900;font-size:18px">9,99€</p>
+          <a class="cta" href="#">Acheter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALE TRAILER -->
+    <div class="float-cta" onclick="openModal()">Voir le trailer</div>
+
+    <div id="modal" class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+        <h3>Bande-annonce</h3>
+        <div style="position:relative;padding-top:56.25%;background:#000;border-radius:8px;overflow:hidden">
+          <iframe src="https://youtu.be/mVjnuaMu6Ns?si=-zvDpuaJYUBaLYMR" title="Trailer" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe>
+        </div>
+        <div style="text-align:right;margin-top:12px">
+          <button onclick="closeModal()" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);font-weight:800;color:var(--muted)">Fermer</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>
+        <div style="font-weight:900">Studio Aurora</div>
+        <div class="meta">© 2025 — Tous droits réservés</div>
+      </div>
+      <div class="meta">Suivez-nous : Discord • Youtube • Tiktok</div>
+    </div>
+  </footer>
+
+  <script>
+    function openModal(){
+      document.getElementById('modal').style.display='flex';
+      document.body.style.overflow='hidden';
+    }
+    function closeModal(){
+      document.getElementById('modal').style.display='none';
+      document.body.style.overflow='auto';
+    }
+  </script>
+</body>
+</html>
